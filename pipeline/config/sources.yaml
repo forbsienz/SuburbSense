@@ -1,0 +1,53 @@
+# External data sources
+
+police:
+  portal_url: "https://www.police.govt.nz/about-us/publications-statistics/data-and-statistics/policedatanz"
+  report_section: "Victimisations (RCVS)"
+  report_title: "Victimisations report with location and time detail"
+  raw_csv: "../../data/raw/police/victimisations.csv"
+  encoding: "utf-16-le"
+  delimiter: "\t"
+  required_columns:
+    - "Year Month"
+    - "ANZSOC Division"
+    - "Area Unit"
+    - "Territorial Authority"
+    - "Day of Week"
+    - "Hour of Day"
+    - "Meshblock"
+
+stats_nz:
+  geographic_areas_table_url: "https://datafinder.stats.govt.nz/table/115227-geographic-areas-table-2024/"
+  raw_dir: "../../data/raw/stats_nz"
+  filenames:
+    geographic_areas: "geographic_areas_2024.csv"
+    meshblock_population: "meshblock_population_2018.csv"
+  downloads:
+    meshblock_population: "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104578/versions/310991/attachments/22604/download/"
+
+export:
+  web_data_dir: "../../web/public/data"
+  # Server-only map data (not deployed under public/ — read by Next.js API at runtime)
+  server_data_dir: "../../web/server-data"
+  pipeline_version: "0.1.0"
+
+population:
+  source_label: "2018 Census electoral population rolled to AU2017"
+  caveat: "Rates use 2018 census population as a stable baseline. They show relative patterns, not exact current risk."
+
+confidence:
+  high:
+    min_population: 1000
+    min_count: 20
+  medium:
+    min_population: 500
+    min_count: 10
+
+narrative:
+  max_unknown_time_pct: 40
+  min_delta_pct_for_mention: 10
+
+comparison:
+  # Area units below this population show a caveat — rates per 1,000 are often misleading
+  # for CBD, commercial, and hospital boundaries with few residents.
+  min_population_for_rate_display: 1000

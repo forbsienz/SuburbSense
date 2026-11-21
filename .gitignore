@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Secrets — never commit (keys live only in local / host env)
+.env
+.env.*
+!.env.example
+!**/.env.example
+web/.env.local
+web/.env.*.local
+
+# Data landing zone + staging (Police extracts can be ~500MB+)
+data/raw/
+data/processed/
+*.parquet
+
+# Next.js build
+web/.next/
+web/out/
+
+# IDE / OS / local deploy metadata
+.DS_Store
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+web/.vercel/
+*.tsbuildinfo
+
+# Testing / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Pipeline-generated serving data (rebuild with `make pipeline` / `make fixtures`)
+# Keep the folders; ignore contents so empty dirs can be documented in README.
+web/public/data/briefs/
+web/public/data/boundaries/
+web/public/data/meshblock_briefs/
+web/public/data/meshblocks_by_suburb/
+web/public/data/areas.json
+web/public/data/geography.json
+web/public/data/meta.json
+web/public/data/national.json
+web/public/data/meshblock_to_area.json
+web/public/data/boundaries/all_suburbs.geojson
+
+# Server-only national GeoJSON (~70MB+)
+web/server-data/boundaries/
+
+# Logs / local scratch
+*.log
+tmp/
+temp/

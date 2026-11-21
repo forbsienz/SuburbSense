@@ -1,0 +1,13 @@
+# Keep secrets and local junk out of CLI uploads.
+# Keep briefs + per-suburb boundaries + server-data (nearby map).
+# Skip heaviest meshblock exports for the first production deploy.
+.env
+.env.*
+!.env.example
+.next/
+node_modules/
+*.log
+.DS_Store
+tsconfig.tsbuildinfo
+public/data/meshblock_briefs/
+public/data/meshblocks_by_suburb/
