@@ -26,9 +26,9 @@ Design decisions and failure modes are written up in [docs/CASE_STUDY.md](docs/C
 
 ## Pipeline (short version)
 
-`make pipeline` runs extract → ingest → transform → load.
+You export the Police Crosstab by hand into `data/raw/police/victimisations.csv`. `make pipeline` then runs ingest → Stats NZ population rollup → aggregates/export (see the `pipeline` target in the Makefile). It does not download the Police file for you.
 
-The Police file that matters is the **Victimisations — location and time** Crosstab (*Time and Place*). Age/Ethnicity sheets and Police Stations exports without Area Unit will not produce suburb briefs. Ingest expects messy Tableau reality (UTF-16 LE / tab is common), aliases a few column names, and **fails closed** if Year Month, ANZSOC Division, Area Unit, or Territorial Authority is missing.
+The extract that matters is **Victimisations — location and time** (*Time and Place*). Age/Ethnicity sheets and Police Stations exports without Area Unit will not produce suburb briefs. Ingest expects messy Tableau reality (UTF-16 LE / tab is common), aliases a few column names, and **fails closed** if Year Month, ANZSOC Division, Area Unit, or Territorial Authority is missing.
 
 Details: [docs/ETL_PIPELINE.md](docs/ETL_PIPELINE.md).
 

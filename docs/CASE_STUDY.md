@@ -15,7 +15,7 @@ Suburb Sense is a monthly file-based pipeline and a static-ish Next.js front end
 
 ## What had to be true
 
-**Right Police extract.** Only the Victimisations *Time and Place* Crosstab has the geography + time grain this product needs. Demographics sheets and Police Stations history without Area Unit look plausible in Tableau and still fail suburb analytics. Ingest treats missing Area Unit (and the other required columns) as a hard error.
+**Right Police extract.** Only the Victimisations *Time and Place* Crosstab has the geography + time grain this product needs. Demographics sheets and Police Stations history without Area Unit look plausible in Tableau and still fail suburb analytics. Ingest treats missing Area Unit (and the other required columns) as a hard error — covered by [`test_validate_columns_rejects_missing_area_unit`](../pipeline/tests/test_ingest.py).
 
 **Messy files.** Exports are often UTF-16 LE and tab-separated, with trailing periods on place names and shifting column labels. That normalisation lives in `pipeline/src/crimetracker/police/ingest.py` and `clean.py`, not in the UI.
 
