@@ -49,7 +49,7 @@ Deployments must include `web/server-data/boundaries/all_suburbs.geojson` in the
 
 1. From [policedata.nz](https://www.police.govt.nz/about-us/publications-statistics/data-and-statistics/policedatanz), export the **Time and Place** Crosstab with Area Unit, TA, Year Month, ANZSOC, Meshblock, day, hour, Victimisations → `data/raw/police/victimisations.csv`
 2. Export [Geographic Areas Table 2024](https://datafinder.stats.govt.nz/table/115227-geographic-areas-table-2024/) → `data/raw/stats_nz/geographic_areas_2024.csv`
-3. `make download-stats && make pipeline`
+3. `make pipeline`
 
 Police usually publish near month-end with about a two-month lag on the latest complete month. Checklist: [docs/USER_ACTIONS.md](docs/USER_ACTIONS.md).
 
